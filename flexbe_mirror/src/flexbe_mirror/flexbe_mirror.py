@@ -249,7 +249,7 @@ class VigirBehaviorMirror(object):
             else:
                 self._sm = sm
         else:
-            JumpableStateMachine.add(container_name + '_mirror', GenericStateForGui(container_name, path, container.outcomes, container.autonomy), transitions=transitions)
+            JumpableStateMachine.add(container_name + '_mirror', MirrorState(container_name, path, container.outcomes, container.autonomy), transitions=transitions)
     
     
     def _jump_callback(self, msg):
