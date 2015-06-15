@@ -27,7 +27,7 @@ class ProxyActionClient(object):
             self.setupClient(topic, msg_type)
     
 
-    def setupClient(self, topic, msg_type, wait_duration=1):
+    def setupClient(self, topic, msg_type, wait_duration=10):
         """
         Tries to set up an action client for calling it later.
         
