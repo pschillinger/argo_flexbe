@@ -76,11 +76,12 @@ class ConcurrentState(EventState):
             if self._returned_outcomes.has_key(name): continue
             outcome = None
             if isinstance(state, smach.StateMachine):
-                state.userdata = smach.Remapper(
+                rmp_ud = smach.Remapper(
                             userdata,
                             state.get_registered_input_keys(),
                             state.get_registered_output_keys(),
                             {key: name + '_' + key for key in state.get_registered_input_keys() + state.get_registered_output_keys()})
+                state.userdata.merge(rmp_ud, rmp_ud.keys(), dict())
                 with state._state_transitioning_lock:
                     outcome = state._update_once()
             else:
